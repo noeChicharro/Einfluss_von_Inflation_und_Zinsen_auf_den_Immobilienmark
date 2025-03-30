@@ -25,6 +25,9 @@ CREATE TABLE IF NOT EXISTS mietpreisindex (
 )
 '''
 
+## Jahr,grossen_Agglomeration,mittelgrossen_Agglomeration,kleinen_Agglomeration,intermediaere Gemeinde,laendliche_Gemeinde,EFH_grossen_Agglomeration,EFH_mittelgrossen_Agglomeration,EFH_kleinen_Agglomeration,EFH__Intermediaere_Gemeinde,EFH_Gemeinde,EGW_grossen_Agglomeration,EFH_mittelgrossen_Agglomeration,EGW_kleinen_Agglomeration,EGW_Intermediaere_Gemeinde,EGW_Laendliche_Gemeinde
+
+
 cursor.execute(create_value_tabel)
 print('Table created')
 
