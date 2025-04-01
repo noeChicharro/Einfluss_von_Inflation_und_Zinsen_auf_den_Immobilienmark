@@ -9,8 +9,6 @@ print(data.head())
 
 pd_cleaned = pd.dropna()
 
-pd_cleaned.to_csv("cleaned_file.csv", index=False)
-
 cursor = engine.raw_connection().cursor()
 
 create_value_tabel = '''
