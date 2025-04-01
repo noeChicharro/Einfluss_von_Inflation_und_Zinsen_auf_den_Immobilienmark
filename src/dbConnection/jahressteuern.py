@@ -4,10 +4,12 @@ from sqlalchemy import create_engine
 
 engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
 
-data = pd.read_csv('../../../data/durchschnittliche_Jahresteuerung_2017_2024.csv')
+data = pd.read_csv('../../data/durchschnittliche_Jahresteuerung_2017_2024.csv')
 print(data.head())
 
 cursor = engine.raw_connection().cursor()
+
+cursor.execute('DROP TABLE IF EXISTS jahressteuern')
 
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS jahressteuern (
