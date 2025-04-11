@@ -1,4 +1,3 @@
-import mysql.connector
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -8,6 +7,8 @@ data = pd.read_csv('../../data/durchschnittsalter_kantone_2010-2023_longformat.c
 print(data.head())
 
 cursor = engine.raw_connection().cursor()
+
+cursor.execute('DROP TABLE IF EXISTS durchschnittsalter')
 
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS durchschnittsalter (
@@ -22,7 +23,7 @@ CREATE TABLE IF NOT EXISTS durchschnittsalter (
 cursor.execute(create_value_tabel)
 print('Table created')
 
-data.to_sql('durchschnittsalter', con=engine, if_exists='append', index=False)
+##data.to_sql('durchschnittsalter', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()

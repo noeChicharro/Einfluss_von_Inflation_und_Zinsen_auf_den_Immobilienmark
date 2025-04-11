@@ -1,4 +1,3 @@
-import mysql.connector
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -8,11 +7,10 @@ data = pd.read_csv('../../../data/landesindex_der_konsumentenpreise_wohnungsmiet
 
 data['basisdatum'] = data['basisdatum'].str.replace('00:00:00', '')
 data['basisdatum'] = data['basisdatum'].str.replace(r'\s+', '')
-##pd.to_csv(data)
 
 cursor = engine.cursor()
 
-##cursor.execute('DROP TABLE IF EXISTS valueYear')
+cursor.execute('DROP TABLE IF EXISTS valueYear')
 
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS mietpreisindex (

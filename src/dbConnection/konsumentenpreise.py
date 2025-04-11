@@ -1,4 +1,3 @@
-import mysql.connector
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -10,6 +9,8 @@ print(data.head())
 pd_cleaned = pd.dropna()
 
 cursor = engine.raw_connection().cursor()
+
+cursor.execute('DROP TABLE IF EXISTS konsumentenpreise')
 
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS konsumentenpreise (
@@ -23,7 +24,7 @@ CREATE TABLE IF NOT EXISTS konsumentenpreise (
 cursor.execute(create_value_tabel)
 print('Table created')
 
-data.to_sql('konsumentenpreise', con=engine, if_exists='append', index=False)
+##data.to_sql('konsumentenpreise', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()

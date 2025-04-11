@@ -1,4 +1,3 @@
-import mysql.connector
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -7,6 +6,8 @@ engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', 
 data = pd.read_csv('../../data/Beschaeftigte_nach_Vollzeitaequivalent_1991-2024.csv')
 
 cursor = engine.raw_connection().cursor()
+
+cursor.execute('DROP TABLE IF EXISTS vollzeitaequivalent')
 
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS vollzeitaequivalent (
@@ -75,7 +76,7 @@ CREATE TABLE IF NOT EXISTS vollzeitaequivalent (
 cursor.execute(create_value_tabel)
 print('Table created')
 
-data.to_sql('vollzeitaequivalent', con=engine, if_exists='append', index=False)
+##data.to_sql('vollzeitaequivalent', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()

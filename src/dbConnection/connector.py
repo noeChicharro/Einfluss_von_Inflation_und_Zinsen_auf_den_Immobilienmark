@@ -13,7 +13,4 @@ if connection.is_connected():
 else:
     print('Connection failed')  
 
-
-engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
-
 connection.close()

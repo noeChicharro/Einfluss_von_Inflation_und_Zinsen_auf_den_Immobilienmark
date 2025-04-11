@@ -1,4 +1,3 @@
-import mysql.connector
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -8,6 +7,8 @@ data = pd.read_csv('../../data/Erwerbslosenquote_gemäss ILO_Grossregionen_2002-
 print(data.head())
 
 cursor = engine.raw_connection().cursor()
+
+cursor.execute('DROP TABLE IF EXISTS erwerbslosenquote')
 
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS erwerbslosenquote (
@@ -33,7 +34,7 @@ CREATE TABLE IF NOT EXISTS erwerbslosenquote (
 cursor.execute(create_value_tabel)
 print('Table created')
 
-data.to_sql('erwerbslosenquote', con=engine, if_exists='append', index=False)
+##data.to_sql('erwerbslosenquote', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()

@@ -1,4 +1,3 @@
-import mysql.connector
 import pandas as pd
 from sqlalchemy import create_engine
 
@@ -36,7 +35,7 @@ kleinen_Agglomeration FLOAT,
 cursor.execute(create_value_tabel)
 print('Table created')
 
-data.to_sql('jahressteuern', con=engine, if_exists='append', index=False)
+##data.to_sql('jahressteuern', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()
