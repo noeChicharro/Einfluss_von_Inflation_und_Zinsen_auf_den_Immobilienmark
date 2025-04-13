@@ -26,6 +26,7 @@ cursor.execute('DROP TABLE IF EXISTS hypozinssatz')
 create_value_tabel = '''
 CREATE TABLE IF NOT EXISTS hypozinssatz (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    jahr_monat INT,
     festhypo_5_7_mittelwert FLOAT, 
     festhypo_5_7_median FLOAT, 
     festhypo_5_7_anzahl_abschluesse INT,
