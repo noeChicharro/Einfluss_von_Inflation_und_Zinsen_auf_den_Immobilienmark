@@ -8,10 +8,10 @@ print(data.head())
 
 cursor = engine.raw_connection().cursor()
 
-cursor.execute('DROP TABLE IF EXISTS jahressteuern')
+cursor.execute('DROP TABLE IF EXISTS jahresteuerung')
 
 create_value_tabel = '''
-CREATE TABLE IF NOT EXISTS jahressteuern (
+CREATE TABLE IF NOT EXISTS jahresteuerung (
     id INT AUTO_INCREMENT PRIMARY KEY,
     jahr INT,
     grossen_Agglomeration FLOAT,
@@ -35,7 +35,7 @@ kleinen_Agglomeration FLOAT,
 cursor.execute(create_value_tabel)
 print('Table created')
 
-##data.to_sql('jahressteuern', con=engine, if_exists='append', index=False)
+##data.to_sql('jahresteuerung', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()
