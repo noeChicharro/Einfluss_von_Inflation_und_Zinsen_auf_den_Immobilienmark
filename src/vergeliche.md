@@ -1,7 +1,7 @@
 ## Vergleiche
 
-* Landesindex der Konsumentenpreise vs. Hvpi
-* Landesindex der Konsumentenpreise (mit Vorhersage)
+* Landesindex der Konsumentenpreise vs. Hvpi -> DONE
+* Landesindex der Konsumentenpreise (mit Vorhersage) -> DONE
 * Hypothekensinsätze vs. Festhypotheken (Variablehyptheken)
 * Wohneigentumtotal vs. Festhypotheken 
 * Verschiedene Gemeindetypen Wohnimmobilienpreise
