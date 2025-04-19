@@ -5,6 +5,6 @@
 * Hypothekensinsätze vs. Festhypotheken (Variablehyptheken)
 * Wohneigentumtotal vs. Festhypotheken -> Done
 * Verschiedene Gemeindetypen Wohnimmobilienpreise -> Done
-* Brutoinlandprodukt vs. Wohneigentum
-* Haushaltseinkommen vs Wohneigentum
+* Brutoinlandprodukt vs. Wohneigentum -> Done
+* Haushaltseinkommen vs Wohneigentum -> Done
 * Brutoinlandsproduct vs. Haushaltseinkommen
