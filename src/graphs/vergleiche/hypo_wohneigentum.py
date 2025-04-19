@@ -18,6 +18,7 @@ selectWohn = """
 """
 
 cursor.execute(selectHypo)
+cursor.execute(selectWohn)
 cursor.close()
 
 dfHypo = pd.read_sql(selectHypo, engine)
