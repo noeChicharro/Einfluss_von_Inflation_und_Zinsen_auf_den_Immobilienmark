@@ -7,4 +7,4 @@
 * Verschiedene Gemeindetypen Wohnimmobilienpreise -> Done
 * Brutoinlandprodukt vs. Wohneigentum -> Done
 * Haushaltseinkommen vs Wohneigentum -> Done
-* Brutoinlandsproduct vs. Haushaltseinkommen
+* Brutoinlandsproduct vs. Haushaltseinkommen -> Done
