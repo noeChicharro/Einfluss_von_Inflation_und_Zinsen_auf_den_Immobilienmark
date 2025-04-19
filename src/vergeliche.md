@@ -4,7 +4,7 @@
 * Landesindex der Konsumentenpreise (mit Vorhersage) -> DONE
 * Hypothekensinsätze vs. Festhypotheken (Variablehyptheken)
 * Wohneigentumtotal vs. Festhypotheken -> Done
-* Verschiedene Gemeindetypen Wohnimmobilienpreise
+* Verschiedene Gemeindetypen Wohnimmobilienpreise -> Done
 * Brutoinlandprodukt vs. Wohneigentum
 * Haushaltseinkommen vs Wohneigentum
 * Brutoinlandsproduct vs. Haushaltseinkommen
