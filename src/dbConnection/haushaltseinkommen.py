@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 
 engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
 
-data = pd.read_csv('../../data/Haushaltseinkommen und -ausgaben Schweiz_2006-2022.csv')
+data = pd.read_csv('data/Haushaltseinkommen und -ausgaben Schweiz_2006-2022.csv')
 print(data.head())
 
 cursor = engine.raw_connection().cursor()
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS haushaltseinkommen (
 cursor.execute(create_value_tabel)
 print('Table created')
 
-##data.to_sql('haushaltseinkommen', con=engine, if_exists='append', index=False)
+data.to_sql('haushaltseinkommen', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()

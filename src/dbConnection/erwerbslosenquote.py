@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 
 engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
 
-data = pd.read_csv('../../data/Erwerbslosenquote_gemäss ILO_Grossregionen_2002-2024.csv')
+data = pd.read_csv('data/Erwerbslosenquote_gemäss ILO_Grossregionen_2002-2024.csv')
 print(data.head())
 
 cursor = engine.raw_connection().cursor()
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS erwerbslosenquote (
 cursor.execute(create_value_tabel)
 print('Table created')
 
-##data.to_sql('erwerbslosenquote', con=engine, if_exists='append', index=False)
+data.to_sql('erwerbslosenquote', con=engine, if_exists='append', index=False)
 print('Data inserted into the database')
 
 cursor.close()
