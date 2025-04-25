@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 
 engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
 
-data = pd.read_csv('data/dataHive.csv')
+data = pd.read_csv('data/dataHive.csv') ## nicht der originale Name
 print(data.head())
 
 cursor = engine.raw_connection().cursor()

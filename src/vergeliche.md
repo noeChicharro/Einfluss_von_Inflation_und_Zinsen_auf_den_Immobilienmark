@@ -8,3 +8,4 @@
 * Brutoinlandprodukt vs. Wohneigentum -> Done
 * Haushaltseinkommen vs Wohneigentum -> Done
 * Brutoinlandsproduct vs. Haushaltseinkommen -> Done
+* Forecast BIP 
