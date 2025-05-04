@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 import pandas as pd
 import plotly.graph_objects as go
 
-engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
+engine = create_engine('mysql+mysqlconnector://root:MScBINA2025-@localhost/bina', echo=False)
 cursor = engine.raw_connection().cursor()
 
 selectQuery = """
