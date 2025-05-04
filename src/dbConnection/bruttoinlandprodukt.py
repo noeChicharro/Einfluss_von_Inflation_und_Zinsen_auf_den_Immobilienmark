@@ -2,6 +2,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
+#engine = create_engine('sqlite:///bina.db', echo=False)
 
 data = pd.read_csv('data/Bruttoinlandprodukt_pro_Kopf_1991-2023.csv')
 print(data.head())
