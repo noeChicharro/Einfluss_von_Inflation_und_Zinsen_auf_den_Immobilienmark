@@ -34,11 +34,19 @@ selectHypo = """
     FROM hypozinssatz
 """
 
+# DataHive
+selectDataHive = """
+    SELECT data_extraction_date, price_calculated, purchase_price, price_per_sqr_meter, room_count, bathroom_count, area_living, area_property, gwr_area_property, gwr_construction_year,
+    gwr_floors, built_year, floor_number, transaction_type, property_category, property_type, zip, main_zip, canton, canton_name, latitude, longitude, geo_quality, min_price, max_price, initial_price
+    FROM dataHive
+"""
+
 cursor.execute(selectLik)
 cursor.execute(selectWohn)
 cursor.execute(selectEinkommen)
 cursor.execute(selectBrutto)
 cursor.execute(selectHypo)
+cursor.execute(selectDataHive)
 cursor.close()
 
 dfLik = pd.read_sql(selectLik, engine)
@@ -46,6 +54,7 @@ dfWohn = pd.read_sql(selectWohn, engine)
 dfEinkommen = pd.read_sql(selectEinkommen, engine)
 dfBrutto = pd.read_sql(selectBrutto, engine)
 dfHypo = pd.read_sql(selectHypo, engine)
+dfDataHive = pd.read_sql(selectDataHive, engine)
 
 engine.dispose()
 
@@ -100,3 +109,11 @@ dfEinkommen.rename(columns={'Jahr': 'jahr'}, inplace=True)
 dfBrutto = dfBrutto[dfBrutto['jahr'] >= 2017]
 dfBrutto = dfBrutto[dfBrutto['jahr'].isin(dfBrutto['jahr'])]
 dfCommonBipEinkommen = pd.merge(dfBrutto, dfEinkommen, on='jahr')
+
+## DataHive 
+price_columns = [
+    "price_calculated", "purchase_price", "price_per_sqr_meter",
+    "min_price", "max_price", "initial_price"
+]
+dfDataHivePrice = dfDataHive[price_columns].copy()
+dfDataHiveOther = dfDataHive.drop(columns=price_columns).copy()
