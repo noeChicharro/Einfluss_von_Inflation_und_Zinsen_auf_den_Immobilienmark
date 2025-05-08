@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
+engine = create_engine('mysql+mysqlconnector://root:MScBINA2025-@localhost/bina', echo=False)
 
 data = pd.read_csv('data/dataHive.csv') ## nicht der originale Name
 print(data.head())
