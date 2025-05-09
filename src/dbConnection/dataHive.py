@@ -16,7 +16,6 @@ cursor.execute('DROP TABLE IF EXISTS dataHive')
 create_value_tabel = '''
 CREATE TABLE dataHive (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    data_extraction_date DATE,
     price_calculated FLOAT,
     purchase_price FLOAT,
     price_per_sqr_meter FLOAT,
@@ -41,7 +40,8 @@ CREATE TABLE dataHive (
     geo_quality FLOAT,
     min_price FLOAT,
     max_price FLOAT,
-    initial_price FLOAT
+    initial_price FLOAT,
+    activated DATE
 )
 '''
 
