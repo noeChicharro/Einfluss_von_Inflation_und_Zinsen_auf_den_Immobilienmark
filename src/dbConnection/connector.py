@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 connection = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='Wuschtel5!',
+    password='MScBINA2025-',
     database='bina'
 )
 
