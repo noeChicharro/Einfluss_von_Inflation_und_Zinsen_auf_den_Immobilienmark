@@ -36,7 +36,7 @@ selectHypo = """
 
 # DataHive
 selectDataHive = """
-    SELECT data_extraction_date, price_calculated, purchase_price, price_per_sqr_meter, room_count, bathroom_count, area_living, area_property, gwr_area_property, gwr_construction_year,
+    SELECT price_calculated, purchase_price, price_per_sqr_meter, room_count, bathroom_count, area_living, area_property, gwr_area_property, gwr_construction_year,
     gwr_floors, built_year, floor_number, transaction_type, property_category, property_type, zip, main_zip, canton, canton_name, latitude, longitude, geo_quality, min_price, max_price, initial_price
     FROM dataHive
 """
