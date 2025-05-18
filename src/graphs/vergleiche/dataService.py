@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 import pandas as pd
 
-engine = create_engine('mysql+mysqlconnector://root:MScBINA2025-@localhost/bina', echo=False)
+engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
 cursor = engine.raw_connection().cursor()
 
 # Inflationsrate
@@ -56,7 +56,7 @@ dfBrutto = pd.read_sql(selectBrutto, engine)
 dfHypo = pd.read_sql(selectHypo, engine)
 dfDataHive = pd.read_sql(selectDataHive, engine)
 
-engine.dispose()
+
 
 ## Strings zu numerischen Werten umwandeln
 dfEinkommen['Einkommen_unselbstaendige_Erwerbstaetigkeit'] = (
@@ -117,3 +117,100 @@ price_columns = [
 ]
 dfDataHivePrice = dfDataHive[price_columns].copy()
 dfDataHiveOther = dfDataHive.drop(columns=price_columns).copy()
+
+
+## Toni sachen
+df_zins = pd.read_sql("SELECT * FROM hypozinssatz", engine)
+df_inflation = pd.read_sql("SELECT * FROM inflationsrate", engine)
+df_wohn = pd.read_sql("SELECT * FROM wohneigentum", engine)
+df_arbeitslos = pd.read_sql("SELECT * FROM erwerbslosenquote", engine)
+
+# SQL-Query definieren
+selectDataHive = "SELECT * FROM dataHive"
+ 
+# Daten laden
+dfDataHive = pd.read_sql(selectDataHive, engine)
+
+engine.dispose()
+
+# Quartile und IQR berechnen
+q1 = dfDataHive['purchase_price'].quantile(0.25)
+q3 = dfDataHive['purchase_price'].quantile(0.75)
+iqr = q3 - q1
+
+# Obere Grenze für Ausreisser definieren
+upper_bound = q3 + 1.5 * iqr
+print(f"Q1: {q1:,.0f} CHF")
+print(f"Q3: {q3:,.0f} CHF")
+print(f"IQR: {iqr:,.0f} CHF")
+print(f"Obere Ausreissergrenze: {upper_bound:,.0f} CHF")
+
+df_clean = dfDataHive[dfDataHive['purchase_price'] <= upper_bound].copy()
+
+df_clean['activated'] = pd.to_datetime(df_clean['activated'], errors='coerce')
+
+df_clean['year'] = df_clean['activated'].dt.year
+df_clean['month'] = df_clean['activated'].dt.to_period('M').astype(str)
+df_clean['quarter'] = df_clean['activated'].dt.to_period('Q').astype(str)
+
+# Gruppieren
+monthly_median = df_clean.groupby('month')['purchase_price'].median()
+quarterly_median = df_clean.groupby('quarter')['purchase_price'].median()
+yearly_median = df_clean.groupby('year')['purchase_price'].median()
+
+df_clean['year'] = df_clean['activated'].dt.year
+df_clean['month'] = df_clean['activated'].dt.month
+
+monthly_prices = df_clean.groupby(['year', 'month'])['purchase_price'].median().reset_index()
+monthly_prices.rename(columns={'purchase_price': 'median_kaufpreis'}, inplace=True)
+
+monthly_prices = monthly_prices[(monthly_prices['year'] >= 2018) & (monthly_prices['year'] <= 2024)]
+df_zins_filtered = df_zins[(df_zins['jahr'] >= 2018) & (df_zins['jahr'] <= 2024)]
+
+df_merge_zins = pd.merge(
+    monthly_prices,
+    df_zins_filtered,
+    left_on=['year', 'month'],
+    right_on=['jahr', 'monat'],
+    how='left'
+)
+
+
+yearly_prices = df_clean[df_clean['year'] <= 2023].groupby('year')['purchase_price'].median().reset_index()
+yearly_prices.rename(columns={'purchase_price': 'median_kaufpreis'}, inplace=True)
+
+df_lik = df_inflation[['jahr', 'lik']].rename(columns={'jahr': 'year', 'lik': 'inflation_lik'})
+
+# Merge mit den Median-Kaufpreisen
+df_merge_inflation = pd.merge(yearly_prices, df_lik, on='year', how='left')
+
+# Neue Spalte 'quartal' erstellen (z. B. 1 für Jan–März, 2 für Apr–Juni etc.)
+df_clean['quartal'] = ((df_clean['month'] - 1) // 3 + 1)
+
+# Median-Kaufpreis pro Jahr & Quartal berechnen
+quarterly_prices = (
+    df_clean
+    .groupby(['year', 'quartal'])['purchase_price']
+    .median()
+    .reset_index()
+)
+
+# Umbenennen für Klarheit
+quarterly_prices.rename(columns={'purchase_price': 'median_kaufpreis'}, inplace=True)
+
+df_impi = df_wohn[['jahr', 'quartal', 'total']].rename(
+    columns={'jahr': 'year', 'quartal': 'quartal', 'total': 'impi_index'}
+)
+
+# "q1", "q2", ... in 1, 2, ... umwandeln
+df_impi['quartal'] = df_impi['quartal'].str.extract('(\d)').astype(int)
+
+# Datentyp von 'quartal' auch in quarterly_prices sicherstellen
+quarterly_prices['quartal'] = quarterly_prices['quartal'].astype(int)
+
+# 🔗 Merge durchführen
+df_merge_impi = pd.merge(
+    quarterly_prices, df_impi,
+    on=['year', 'quartal'],
+    how='left'
+)
