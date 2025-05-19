@@ -56,8 +56,6 @@ df_merge_zins = pd.merge(
 yearly_prices = dfDataHiveCleaned[dfDataHiveCleaned['jahr'] <= 2023].groupby('jahr')['purchase_price'].median().reset_index()
 yearly_prices.rename(columns={'purchase_price': 'median_kaufpreis'}, inplace=True)
 
-dataService.dfLik = dataService.dfLik[['Jahr']].rename(columns={'Jahr': 'jahr'})
-
 # Merge mit den Median-Kaufpreisen
 df_merge_inflation = pd.merge(yearly_prices, dataService.dfLik, on='jahr', how='left')
 

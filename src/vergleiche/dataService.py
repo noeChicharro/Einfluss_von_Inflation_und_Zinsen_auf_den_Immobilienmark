@@ -6,39 +6,32 @@ cursor = engine.raw_connection().cursor()
 
 # Inflationsrate
 selectLik = """
-    SELECT Jahr, lik, hvpi
-    FROM inflationsrate
+    SELECT * FROM inflationsrate
 """
 
 # Wohneigentum
 selectWohn = """
-    SELECT jahr, quartal, total, gemeindetyp_1, gemeindetyp_2, gemeindetyp_3, gemeindetyp_4, gemeindetyp_5
-    FROM wohneigentum
+    SELECT * FROM wohneigentum
 """
 
 # Haushaltseinkommen
 selectEinkommen = """
-    SELECT Jahr, Einkommen_unselbstaendige_Erwerbstaetigkeit
-    FROM haushaltseinkommen
+    SELECT * FROM haushaltseinkommen
 """
 
 # Bruttoinlandprodukt
 selectBrutto = """
-    SELECT jahr, bip_pro_Kopf_CHF_laufende_Preise
-    FROM bruttoinlandprodukt
+    SELECT * FROM bruttoinlandprodukt
 """
 
 # Hypothekenzinssatz
 selectHypo = """
-    SELECT jahr, monat, festhypo_mittelwert
-    FROM hypozinssatz
+    SELECT * FROM hypozinssatz
 """
 
 # DataHive
 selectDataHive = """
-    SELECT price_calculated, purchase_price, price_per_sqr_meter, room_count, bathroom_count, area_living, area_property, gwr_area_property, gwr_construction_year,
-    gwr_floors, built_year, floor_number, transaction_type, property_category, property_type, zip, main_zip, canton, canton_name, latitude, longitude, geo_quality, min_price, max_price, initial_price
-    FROM dataHive
+    SELECT * FROM dataHive
 """
 
 cursor.execute(selectLik)
