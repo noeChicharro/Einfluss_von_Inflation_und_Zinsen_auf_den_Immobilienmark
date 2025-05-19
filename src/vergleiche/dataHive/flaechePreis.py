@@ -19,6 +19,6 @@ plt.title('Price per Square Meter by Canton')
 plt.xlabel('Canton')
 plt.ylabel('Price per Square Meter (CHF)')
 plt.tight_layout()
-#plt.show()
+plt.show()
 
 
