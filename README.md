@@ -1,4 +1,5 @@
-# 📊 Analyseprojekt für Zeitreihen und Immobilienpreise
+# 📊 Der Einfluss von Zinsen & Inflation auf den Schweizer Immobilienmarkt (2013–2025)
+
 
 Dieses Projekt beschäftigt sich mit der Analyse und Visualisierung von Zeitreihen im Kontext von Immobilienpreisen, Zinsen und weiteren wirtschaftlichen Kennzahlen. Es verwendet Daten aus einer MySQL-Datenbank und diverse statistische und maschinelle Lernverfahren.
 
