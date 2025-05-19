@@ -9,6 +9,10 @@ selectLik = """
     SELECT * FROM inflationsrate
 """
 
+selectLikBig = """
+    SELECT * FROM likBig
+"""
+
 # Wohneigentum
 selectWohn = """
     SELECT * FROM wohneigentum
@@ -35,6 +39,7 @@ selectDataHive = """
 """
 
 cursor.execute(selectLik)
+cursor.execute(selectLikBig)
 cursor.execute(selectWohn)
 cursor.execute(selectEinkommen)
 cursor.execute(selectBrutto)
@@ -43,6 +48,7 @@ cursor.execute(selectDataHive)
 cursor.close()
 
 dfLik = pd.read_sql(selectLik, engine)
+dfLikBig = pd.read_sql(selectLikBig, engine)
 dfWohn = pd.read_sql(selectWohn, engine)
 dfEinkommen = pd.read_sql(selectEinkommen, engine)
 dfBrutto = pd.read_sql(selectBrutto, engine)
