@@ -1,8 +1,6 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-## todo: files missing you idiot :D
-
 engine = create_engine('mysql+mysqlconnector://root:Wuschtel5!@localhost/bina', echo=False)
 
 data = pd.read_csv('data/Bruttoinlandprodukt_pro_Kopf_1991-2023.csv')
@@ -29,6 +27,8 @@ print('Table bruttoinlandprodukt created')
 
 data.to_sql('bruttoinlandprodukt', con=engine, if_exists='append', index=False)
 print('Data inserted into bruttoinlandprodukt')
+
+data = pd.read_csv('data/dataHive.csv')
 
 cursor.execute('DROP TABLE IF EXISTS dataHive')
 
@@ -70,6 +70,8 @@ print('Table dataHive created')
 data.to_sql('dataHive', con=engine, if_exists='append', index=False)
 print('Data inserted into dataHive')
 
+data = pd.read_csv('data/inflationsrate_schweiz-2013-2023.csv')
+
 cursor.execute('DROP TABLE IF EXISTS inflationsrate')
 
 create_value_tabel = '''
@@ -106,6 +108,7 @@ print('Table created')
 data.to_sql('likBig', con=engine, if_exists='append', index=False)
 print('Data inserted into the database') 
 
+data = pd.read_csv('data/impi_wohneigentum_ 2017-2024.csv', sep=';', encoding='utf-8')
 
 cursor.execute('DROP TABLE IF EXISTS wohneigentum')
 
@@ -128,6 +131,8 @@ print('Table wohneigentum created')
 
 data.to_sql('wohneigentum', con=engine, if_exists='append', index=False)
 print('Data inserted into wohneigentum')
+
+data = pd.read_csv('data/Haushaltseinkommen und -ausgaben Schweiz_2006-2022.csv')
 
 cursor.execute('DROP TABLE IF EXISTS haushaltseinkommen')
 
@@ -189,6 +194,8 @@ print('Table haushaltseinkommen created')
 
 data.to_sql('haushaltseinkommen', con=engine, if_exists='append', index=False)
 print('Data inserted into haushaltseinkommen')
+
+data = pd.read_csv('data/hypozinssatz_2009-2024.csv', sep=';', encoding='utf-8')
 
 cursor.execute('DROP TABLE IF EXISTS hypozinssatz')
 
