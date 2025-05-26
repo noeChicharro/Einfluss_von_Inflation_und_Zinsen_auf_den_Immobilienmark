@@ -5,6 +5,9 @@ Dieses Projekt beschäftigt sich mit der Analyse und Visualisierung von Zeitreih
 
 ---
 
+Um das Jupyter Notebook einzusehen ist keine lokale Entwicklungsumgebung nötig. 
+Im Fall eines Runs jedoch schon. Dafür die folgenden Schritte befolgen:
+
 ## 🧰 Benötigte Python-Pakete
 
 Stelle sicher, dass alle folgenden Pakete installiert sind:
