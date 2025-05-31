@@ -34,6 +34,7 @@ python src/dbConnection/createTables.py
 
 ## 📁 Projektstruktur (Auszug)
 ```bash
+├── data/                           # Präsentation und Video
 ├── src/
 │   └── dbConnection/
 │       ├── archive/                # Archivierte Datenbankeinträge
