@@ -34,7 +34,7 @@ python src/dbConnection/createTables.py
 
 ## 📁 Projektstruktur (Auszug)
 ```bash
-├── data/                           # Präsentation und Video
+├── presentation/                   # Präsentation und Video
 ├── src/
 │   └── dbConnection/
 │       ├── archive/                # Archivierte Datenbankeinträge
@@ -49,6 +49,8 @@ python src/dbConnection/createTables.py
 │       ├── dataHiveService.py      # Service um DataHive Daten gereinigt zur Verfügung zustellen
 │       ├── dataService.py          # Service um allgemeine Daten gereinigt zur Verfügung zustellen
 │       └── main.ipynb              # Jupyter Notebook 
-├── data/                           # Lokale Datenquellen (originale CSVs)
+├── data/                           # Lokale Datenquellen (originale CSVs) *
 └── README.md                       # Diese Datei
 ```
+
+* Für die originale DataHive Datei bitte diesem Link folgen : https://drive.google.com/file/d/1dYwbdT2BrDB14WThg1-gI1Hd8jrZviC8/view?usp=sharing
