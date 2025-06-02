@@ -53,4 +53,4 @@ python src/dbConnection/createTables.py
 └── README.md                       # Diese Datei
 ```
 
-* Für die originale DataHive Datei bitte diesem Link folgen : https://drive.google.com/file/d/1dYwbdT2BrDB14WThg1-gI1Hd8jrZviC8/view?usp=sharing
+* Für die originale DataHive Datei bitte diesem Link folgen (NDA) : https://drive.google.com/file/d/1dYwbdT2BrDB14WThg1-gI1Hd8jrZviC8/view?usp=sharing
